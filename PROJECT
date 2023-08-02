@@ -1,0 +1,20 @@
+domain: my.domain
+layout:
+- go.kubebuilder.io/v3
+projectName: kubebuilder-demo
+repo: kubebuilder-demo
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: my.domain
+  group: apps
+  kind: OS
+  path: kubebuilder-demo/api/v1
+  version: v1
+  webhooks:
+    defaulting: true
+    validation: true
+    webhookVersion: v1
+version: "3"

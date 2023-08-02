@@ -1,0 +1,168 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.7.0
+  creationTimestamp: null
+  name: osinstances.apps.my.domain
+spec:
+  group: apps.my.domain
+  names:
+    kind: OSInstance
+    listKind: OSInstanceList
+    plural: osinstances
+    singular: osinstance
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: OSInstance defines some infomation of a node
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: OSInstanceSpec defines desired state of OS
+            properties:
+              nodestatus:
+                type: string
+              sysconfigs:
+                description: SysConfigs defines all configurations expected by the
+                  user
+                properties:
+                  configs:
+                    items:
+                      description: SysConfig defines a type of configurations expected
+                        by the user
+                      properties:
+                        configpath:
+                          type: string
+                        contents:
+                          items:
+                            description: Content defines the key and value of configuration
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            type: object
+                          type: array
+                        model:
+                          type: string
+                      type: object
+                    type: array
+                  version:
+                    type: string
+                type: object
+              upgradeconfigs:
+                description: SysConfigs defines all configurations expected by the
+                  user
+                properties:
+                  configs:
+                    items:
+                      description: SysConfig defines a type of configurations expected
+                        by the user
+                      properties:
+                        configpath:
+                          type: string
+                        contents:
+                          items:
+                            description: Content defines the key and value of configuration
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            type: object
+                          type: array
+                        model:
+                          type: string
+                      type: object
+                    type: array
+                  version:
+                    type: string
+                type: object
+            type: object
+          status:
+            description: OSInstanceStatus defines status of a node
+            properties:
+              sysconfigs:
+                description: SysConfigs defines all configurations expected by the
+                  user
+                properties:
+                  configs:
+                    items:
+                      description: SysConfig defines a type of configurations expected
+                        by the user
+                      properties:
+                        configpath:
+                          type: string
+                        contents:
+                          items:
+                            description: Content defines the key and value of configuration
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            type: object
+                          type: array
+                        model:
+                          type: string
+                      type: object
+                    type: array
+                  version:
+                    type: string
+                type: object
+              upgradeconfigs:
+                description: SysConfigs defines all configurations expected by the
+                  user
+                properties:
+                  configs:
+                    items:
+                      description: SysConfig defines a type of configurations expected
+                        by the user
+                      properties:
+                        configpath:
+                          type: string
+                        contents:
+                          items:
+                            description: Content defines the key and value of configuration
+                            properties:
+                              key:
+                                type: string
+                              value:
+                                type: string
+                            type: object
+                          type: array
+                        model:
+                          type: string
+                      type: object
+                    type: array
+                  version:
+                    type: string
+                type: object
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

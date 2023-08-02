@@ -1,0 +1,18 @@
+apiVersion: apps.my.domain/v1
+kind: OS
+metadata:
+  name: os-sample
+spec:
+  imagetype: disk
+  opstype: upgrade
+  osversion: edit.os.version
+  maxunavailable: -2
+  containerimage: ""
+  imageurl: edit.image.url
+  checksum: image.checksum
+  flagSafe: true
+  mtls: false
+  cacert:  ca certificate 
+  clientcert:  client certificate 
+  clientkey:  client certificate key
+  evictpodforce: true
